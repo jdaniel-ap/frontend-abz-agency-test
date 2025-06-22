@@ -1,0 +1,10 @@
+@use "@/styles/variables" as *;
+
+.container {
+  text-align: center;
+  padding: 140px 16px 0;
+
+  h1 {
+    padding-inline: 10px;
+  }
+}
