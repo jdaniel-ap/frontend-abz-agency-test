@@ -1,0 +1,17 @@
+@use '@/styles/variables' as *;
+
+.text {
+  font-family: $font-family-base;
+  font-size: 16px;
+  font-weight: $font-weight-regular;
+  line-height: 26px;
+  margin: 0;
+}
+
+.dark {
+  color: $color-text;
+}
+
+.light {
+  color: $color-text-white;
+}
