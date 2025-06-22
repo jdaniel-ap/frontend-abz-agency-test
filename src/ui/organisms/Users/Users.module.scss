@@ -19,8 +19,9 @@
   padding-inline: 16px;
 
   @include tablet-up {
-    gap: 29px;
+    gap: 16px;
     grid-template-columns: repeat(2, 1fr);
+    padding-inline: 32px;
   }
 
   @include desktop-up {

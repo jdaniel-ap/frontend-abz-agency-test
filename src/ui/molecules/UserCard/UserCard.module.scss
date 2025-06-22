@@ -8,20 +8,12 @@
   flex-direction: column;
   height: 254px;
   justify-content: center;
-  padding: 20px;
+  padding: 20px 0;
   text-align: center;
   gap: 20px;
   width: 100%;
   min-width: 0;
   overflow: hidden;
-
-  @include tablet-up {
-    max-width: 344px;
-  }
-
-  @include desktop-up {
-    max-width: 282px;
-  }
 }
 
 .placeholder {
