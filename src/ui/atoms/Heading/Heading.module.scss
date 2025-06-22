@@ -1,0 +1,17 @@
+@use '@/styles/variables' as *;
+
+.heading {
+  font-family: $font-family-base;
+  font-size: 40px;
+  font-weight: $font-weight-regular;
+  line-height: 40px;
+  margin: 0;
+}
+
+.dark {
+  color: $color-text;
+}
+
+.light {
+  color: $color-text-white;
+}
