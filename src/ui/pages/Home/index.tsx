@@ -1,9 +1,10 @@
-import { Header } from "@/ui/molecules";
+import { Header, Hero } from "@/ui/molecules";
 
 function Home() {
   return (
     <>
       <Header />
+      <Hero />
     </>
   );
 }
