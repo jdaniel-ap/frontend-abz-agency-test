@@ -1,24 +1,26 @@
-@use '@/styles/variables' as *;
+@use "@/styles/variables" as *;
 
 .hero {
-  background-image: url('@/assets/pexels-alexandr-podvalny-1227513.webp');
-  background-position: center center;
+  background-image: url("@/assets/pexels-alexandr-podvalny-1227513.webp");
+  background-position: center 100%;
   background-repeat: no-repeat;
-  background-size: auto 500px;
+  background-size: auto 800px;
   height: 500px;
   position: relative;
+  transition: background-image 0.3s ease;
 
-  @include tablet-up {
-    background-size: 100% 100%;
+  &--loaded {
+    background-image: url("@/assets/pexels-alexandr-podvalny-1227513-hd.jpeg");
   }
 
   @include desktop-up {
+    background-size: 100% auto;
     height: 650px;
   }
 
   &::before {
     background-color: rgba(0, 0, 0, 0.5);
-    content: '';
+    content: "";
     height: 100%;
     left: 0;
     position: absolute;
@@ -28,20 +30,33 @@
   }
 }
 
-
-.landscape {
+.hero__landscape {
   height: 100%;
   object-fit: none;
   position: absolute;
   width: 100%;
 }
 
-.content {
-  padding: 40px 16px;
-  position: relative;
-  text-align: center;
-  z-index: 2;
+.hero__content {
+  align-items: center;
   display: flex;
   flex-direction: column;
   gap: 21px;
+  padding: 40px 16px 0;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+
+  button {
+    margin-top: 11px;
+  }
+
+  @include tablet-up {
+    height: 100%;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    justify-content: center;
+    padding: 0;
+  }
 }
