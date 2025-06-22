@@ -2,9 +2,30 @@
 
 .container {
   text-align: center;
-  padding: 140px 16px 0;
+  padding: 140px 0 0;
 
   h1 {
-    padding-inline: 10px;
+    padding: 0 10px 50px;
+  }
+}
+
+.users {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(328px, 1fr));
+  margin-top: 32px;
+  margin: 0 auto;
+  max-width: $breakpoint-lg;
+  padding-inline: 16px;
+
+  @include tablet-up {
+    gap: 29px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desktop-up {
+    gap: 29px;
+    grid-template-columns: repeat(3, 1fr);
+    padding-inline: 60px;
   }
 }

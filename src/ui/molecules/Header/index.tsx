@@ -4,16 +4,18 @@ import styles from "./Header.module.scss";
 
 function Header() {
   return (
-    <header className={styles.header} role="banner">
-      <Logo className={styles.logo} role="img" aria-label="ABZ Agency Logo" />
-      <nav className={styles.menu} aria-label="Main navigation">
-        <li className={styles.menuItem}>
-          <Button aria-label="View users list">Users</Button>
-        </li>
-        <li className={styles.menuItem}>
-          <Button aria-label="Sign up for new account">Sign up</Button>
-        </li>
-      </nav>
+    <header className={styles.container}>
+      <section className={styles.header} role="banner">
+        <Logo className={styles.logo} role="img" aria-label="ABZ Agency Logo" />
+        <nav className={styles.menu} aria-label="Main navigation">
+          <li className={styles.menuItem}>
+            <Button aria-label="View users list">Users</Button>
+          </li>
+          <li className={styles.menuItem}>
+            <Button aria-label="Sign up for new account">Sign up</Button>
+          </li>
+        </nav>
+      </section>
     </header>
   );
 }

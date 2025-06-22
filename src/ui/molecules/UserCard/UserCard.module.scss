@@ -3,10 +3,10 @@
 .container {
   align-items: center;
   background-color: $color-white;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
+  flex: 1;
   height: 254px;
   justify-content: center;
-  flex: 1;
-  border-radius: 10px;
 }
