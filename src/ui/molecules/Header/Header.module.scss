@@ -1,4 +1,10 @@
-@use '@/styles/variables' as *;
+@use "@/styles/variables" as *;
+
+.container {
+  @include flex-center;
+  background-color: $color-white;
+  width: 100%;
+}
 
 .header {
   @include flex-between;
@@ -13,10 +19,16 @@
 
   @include tablet-up {
     padding-inline: 32px;
+    max-width: $breakpoint-lg;
+    margin: 0 auto;
   }
 
-    @include desktop-up {
+  @include desktop-up {
     padding-inline: 60px;
+  }
+
+  @include large-desktop-up {
+    padding-inline: 10px;
   }
 }
 
@@ -36,4 +48,3 @@
   width: 104px;
   height: 26px;
 }
-
