@@ -1,4 +1,4 @@
-@use '@/styles/variables' as *;
+@use "@/styles/variables" as *;
 
 .text {
   font-family: $font-family-base;
@@ -13,5 +13,5 @@
 }
 
 .light {
-  color: $color-text-white;
+  color: $color-white;
 }

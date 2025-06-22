@@ -1,0 +1,12 @@
+@use "@/styles/variables" as *;
+
+.container {
+  align-items: center;
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  height: 254px;
+  justify-content: center;
+  flex: 1;
+  border-radius: 10px;
+}
