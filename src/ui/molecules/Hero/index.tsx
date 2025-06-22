@@ -1,5 +1,7 @@
+import styles from "./Hero.module.scss";
+
 function Hero() {
-  return <section>Hero</section>;
+  return <section className={styles.hero}></section>;
 }
 
 export default Hero;

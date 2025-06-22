@@ -1,2 +1,35 @@
 @use '@/styles/variables' as *;
 
+.hero {
+  background-image: url('@/assets/pexels-alexandr-podvalny-1227513.webp');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: auto 500px;
+  height: 500px;
+  position: relative;
+  @include tablet-up {
+    background-size: 100% 100%;
+  }
+  @include desktop-up {
+    height: 650px;
+  }
+
+  &::before {
+    background-color: rgba(0, 0, 0, 0.5);
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+
+.landscape {
+  height: 100%;
+  object-fit: none;
+  position: absolute;
+  width: 100%;
+}
