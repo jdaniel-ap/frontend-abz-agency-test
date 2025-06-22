@@ -1,10 +1,10 @@
-import Button from "@/ui/atoms/Button";
+import { Header } from "@/ui/molecules";
 
 function Home() {
   return (
-    <div>
-      <Button>Home</Button>
-    </div>
+    <>
+      <Header />
+    </>
   );
 }
 
