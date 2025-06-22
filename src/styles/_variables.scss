@@ -1,5 +1,5 @@
 // Typography
-$font-family-base: 'Nunito', sans-serif;
+$font-family-base: 'Nunito Variable', 'Nunito', sans-serif;
 $font-weight-regular: 400;
 $font-weight-bold: 800;
 $line-height-base: 1.5;
@@ -17,9 +17,9 @@ $color-error: #ff0000;
 $color-border: #cccccc;
 
 // Sizing
-$border-radius-sm: 4px;      // Para inputs
-$border-radius: 1rem;        // Radio regular (mantengo el actual)
-$border-radius-full: 80px;   // Para botones (casi circular)
+$border-radius-sm: 4px;
+$border-radius: 1rem;
+$border-radius-full: 80px;
 
 // Shadows
 $shadow-card: 0 2px 8px rgba(0, 0, 0, 0.1);
