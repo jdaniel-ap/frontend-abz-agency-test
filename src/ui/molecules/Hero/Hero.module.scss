@@ -8,6 +8,8 @@
   height: 500px;
   position: relative;
   transition: background-image 0.3s ease;
+  max-width: $breakpoint-lg;
+  margin: 0 auto;
 
   &--loaded {
     background-image: url("@/assets/pexels-alexandr-podvalny-1227513-hd.jpeg");
