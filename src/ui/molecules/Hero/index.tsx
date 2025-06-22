@@ -1,8 +1,10 @@
 import { useLayoutEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Button, Heading, Text } from "@/ui/atoms";
 import styles from "./Hero.module.scss";
 
 function Hero() {
+  const { t } = useTranslation();
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useLayoutEffect(() => {
@@ -18,17 +20,9 @@ function Hero() {
       className={`${styles.hero} ${imageLoaded ? styles["hero--loaded"] : ""}`}
     >
       <div className={styles.hero__content}>
-        <Heading variant="light">
-          Test assignment for front-end developer
-        </Heading>
-        <Text variant="light">
-          What defines a good front-end developer is one that has skilled
-          knowledge of HTML, CSS, JS with a vast understanding of User design
-          thinking as they'll be building web interfaces with accessibility in
-          mind. They should also be excited to learn, as the world of Front-End
-          Development keeps evolving.
-        </Text>
-        <Button>Sign up</Button>
+        <Heading variant="light">{t("hero.title")}</Heading>
+        <Text variant="light">{t("hero.description")}</Text>
+        <Button>{t("hero.button")}</Button>
       </div>
     </section>
   );
