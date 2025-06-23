@@ -1,46 +1,25 @@
 import { Button, Heading, Spinner } from "@/ui/atoms";
 import styles from "./Users.module.scss";
 import UserCard from "@/ui/molecules/UserCard";
-import { useUsers } from "@/hooks/useApi";
-import { useState, useEffect, useCallback } from "react";
-import type { User } from "@/types/api";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useUsersStore } from "@/stores";
 
 function Users() {
   const { t } = useTranslation();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [allUsers, setAllUsers] = useState<User[]>([]);
 
-  const {
-    data: usersData,
-    isLoading,
-    error,
-  } = useUsers({
-    page: currentPage,
-    count: 6,
-  });
-
-  const hasNextPage = usersData?.links.next_url !== null;
-
-  const revalidateUsers = useCallback(() => {
-    if (usersData?.users) {
-      if (currentPage === 1) {
-        setAllUsers(usersData.users);
-      } else {
-        setAllUsers((prev) => [...prev, ...usersData.users]);
-      }
-    }
-  }, [usersData, currentPage]);
+  const { users, isLoading, error, hasNextPage, loadUsers, loadMoreUsers } =
+    useUsersStore();
 
   const handleLoadMore = () => {
-    if (usersData?.links.next_url) {
-      setCurrentPage((prev) => prev + 1);
-    }
+    loadMoreUsers();
   };
 
   useEffect(() => {
-    revalidateUsers();
-  }, [usersData, revalidateUsers]);
+    if (users.length === 0) {
+      loadUsers(1);
+    }
+  }, [users.length, loadUsers]);
 
   if (error) {
     return (
@@ -48,7 +27,7 @@ function Users() {
         <Heading>{t("users.title")}</Heading>
         <div className={styles.users}>
           <div>
-            {t("users.errorLoading")} {error.message}
+            {t("users.errorLoading")} {error}
           </div>
         </div>
       </section>
@@ -58,11 +37,11 @@ function Users() {
   return (
     <section className={styles.container} id="users">
       <Heading>{t("users.title")}</Heading>
-      {!isLoading && allUsers.length === 0 && (
+      {!isLoading && users.length === 0 && (
         <div className={styles.users}>{t("users.noUsers")}</div>
       )}
       <div className={styles.users}>
-        {allUsers.map((user) => (
+        {users.map((user) => (
           <UserCard key={user.id} user={user} />
         ))}
       </div>

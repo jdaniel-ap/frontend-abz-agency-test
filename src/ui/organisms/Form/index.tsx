@@ -11,12 +11,15 @@ import {
   type UserRegistrationForm,
 } from "@/schemas/userRegistration";
 import { useTranslation } from "react-i18next";
+import { useUsersStore } from "@/stores";
 
 function Form() {
   const { t } = useTranslation();
   const [sentSuccess, setSentSuccess] = useState(false);
-  const { data: positionsData, isLoading } = usePositions();
+  const { data: positionsData, isLoading: positionsLoading } = usePositions();
   const registerUser = useRegisterUser();
+  const { resetToPageOne } = useUsersStore();
+
   const form = useForm<UserRegistrationForm>({
     resolver: zodResolver(userRegistrationSchema),
     mode: "onSubmit",
@@ -35,12 +38,13 @@ function Form() {
       await registerUser.mutateAsync(data);
       form.reset();
       setSentSuccess(true);
+      await resetToPageOne();
     } catch (error) {
       console.error(t("errors.registrationFailed"), error);
     }
   };
 
-  if (isLoading) {
+  if (positionsLoading) {
     return (
       <div className={styles.container}>
         <Heading>{t("form.title")}</Heading>
