@@ -1,0 +1,101 @@
+@use "@/styles/variables" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inputWrapper {
+  position: relative;
+  border-radius: $border-radius-sm;
+  transition: all 0.2s ease;
+
+  &.normal {
+    background-color: $color-white;
+    border: 1px solid $color-border;
+  }
+
+  &.filled {
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+  }
+
+  &.error {
+    background-color: $color-white;
+    border: 1px solid $color-error;
+
+    &:focus-within {
+      border-color: $color-error;
+      box-shadow: 0 0 0 1px $color-error;
+    }
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 16px 12px 8px 12px;
+  font-family: $font-family-base;
+  font-size: 16px;
+  font-weight: $font-weight-regular;
+  color: $color-text;
+  background: transparent;
+  border: none;
+  border-radius: $border-radius-sm;
+  outline: none;
+  line-height: 1.5;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.floatingLabel {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: $font-family-base;
+  font-size: 16px;
+  font-weight: $font-weight-regular;
+  color: $color-muted;
+  background-color: $color-white;
+  padding: 0 4px;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 1;
+
+  .input:focus + &,
+  .input:not(:placeholder-shown) + & {
+    top: 0;
+    transform: translateY(-50%) scale(0.85);
+    font-size: 14px;
+  }
+
+  .error & {
+    color: $color-error;
+  }
+
+  .error .input:focus + &,
+  .error .input:not(:placeholder-shown) + & {
+    color: $color-error;
+  }
+}
+
+.helperText {
+  font-family: $font-family-base;
+  font-size: 12px;
+  font-weight: $font-weight-regular;
+  margin-top: 4px;
+  text-align: left;
+  color: $color-muted;
+}
+
+.errorText {
+  color: $color-error;
+}
