@@ -31,9 +31,7 @@ function FileInput({
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0] || null;
 
-    // Validate file type - only accept JPEG/JPG
     if (file && !file.type.includes("jpeg") && !file.type.includes("jpg")) {
-      // Reset the input
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }
@@ -48,7 +46,7 @@ function FileInput({
   return (
     <div className={styles.container}>
       <div
-        className={styles.inputGroup}
+        className={`${styles.inputGroup} ${error ? styles.error : ""}`}
         onClick={handleButtonClick}
         style={{ cursor: "pointer" }}
       >
@@ -63,7 +61,7 @@ function FileInput({
         >
           {t("form.uploadButton")}
         </Button>
-        <div className={`${styles.fileName} ${error ? styles.error : ""}`}>
+        <div className={styles.fileName}>
           {selectedFile
             ? selectedFile.name.slice(0, LIMIT_CHARS)
             : t("form.uploadPlaceholder")}
