@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Heading, Button, RadioButton, FileInput, Spinner } from "@/ui/atoms";
 import { SuccessMessage, PhoneInput } from "@/ui/molecules";
-import styles from "./Form.module.scss";
+import styles from "./Signup.module.scss";
 import Input from "@/ui/atoms/Input";
 import { usePositions, useRegisterUser } from "@/hooks/useApi";
 import {
