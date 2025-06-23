@@ -20,6 +20,11 @@
     height: 650px;
   }
 
+  @include large-desktop-up {
+    background-size: 2000px;
+    background-position: center -600px;
+  }
+
   &::before {
     background-color: rgba(0, 0, 0, 0.5);
     content: "";
