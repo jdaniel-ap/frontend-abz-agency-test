@@ -16,14 +16,13 @@
 }
 
 .fields {
-  margin: 0 auto;
+  margin: 50px auto 0;
   width: 95%;
   display: flex;
   flex-direction: column;
   gap: 50px;
 
   @include tablet-up {
-    margin: 50px auto 0;
     width: 100%;
     max-width: 380px;
   }
