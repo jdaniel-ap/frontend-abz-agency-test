@@ -1,0 +1,75 @@
+@use "@/styles/variables" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+  border-radius: $border-radius-sm;
+  overflow: hidden;
+  background-color: $color-white;
+  transition: border-color 0.2s ease;
+
+  &:focus-within {
+    border-color: $color-secondary;
+  }
+
+  &.error {
+    border-color: $color-error;
+  }
+}
+
+.button {
+  flex-shrink: 0;
+  border: 1px solid opacify($color: #000000, $amount: 0.87);
+  background-color: transparent;
+  border-radius: 0;
+  border-top-left-radius: $border-radius-sm;
+  border-bottom-left-radius: $border-radius-sm;
+  height: 58px;
+  min-width: 83px;
+  font-family: $font-family-base;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fileName {
+  flex: 1;
+  padding: 16px 12px;
+  font-family: $font-family-base;
+  font-size: 16px;
+  color: $color-muted-secondary;
+  border: none;
+  outline: none;
+  text-align: left;
+  line-height: 1.5;
+  border-block: 1px solid $color-gray-input;
+  border-right: 1px solid $color-gray-input;
+
+  &.error {
+    color: $color-error;
+  }
+}
+
+.hiddenInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.errorText {
+  font-family: $font-family-base;
+  font-size: 12px;
+  color: $color-error;
+  margin-top: 4px;
+  text-align: left;
+  padding-left: 16px;
+}

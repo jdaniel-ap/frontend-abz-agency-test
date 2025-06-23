@@ -1,0 +1,65 @@
+@use "@/styles/variables" as *;
+
+.container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: $font-family-base;
+  font-size: 16px;
+  font-weight: $font-weight-regular;
+  color: $color-text;
+  gap: 12px;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 11px;
+  position: relative;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+
+  &:checked ~ .checkmark {
+    background-color: $color-white;
+    border-color: $color-secondary;
+
+    &::after {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+.checkmark {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  background-color: $color-white;
+  border: 1px solid $color-gray-input;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $color-secondary;
+    opacity: 0;
+    transition: all 0.2s ease;
+  }
+}
+
+.label {
+  line-height: 1.5;
+  user-select: none;
+  flex: 1;
+}
