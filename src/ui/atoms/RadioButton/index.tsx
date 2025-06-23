@@ -7,11 +7,14 @@ interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputElement> {
   value: string;
 }
 
-function RadioButton({ label, name, value, ...props }: RadioButtonProps) {
+function RadioButton({ label, name, value, id, ...props }: RadioButtonProps) {
+  const radioId = id || `radio-${name}-${value}`;
+
   return (
-    <label className={styles.container}>
+    <label className={styles.container} htmlFor={radioId}>
       <input
         type="radio"
+        id={radioId}
         name={name}
         value={value}
         className={styles.input}
