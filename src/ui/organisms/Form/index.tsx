@@ -20,7 +20,7 @@ function Form() {
   const registerUser = useRegisterUser();
   const { resetToPageOne } = useUsersStore();
 
-  const form = useForm<UserRegistrationForm>({
+  const form = useForm({
     resolver: zodResolver(userRegistrationSchema),
     mode: "onSubmit",
     reValidateMode: "onChange",
@@ -39,7 +39,7 @@ function Form() {
       form.reset();
       setSentSuccess(true);
       await resetToPageOne();
-    } catch (error) {
+    } catch (error: unknown) {
       console.error(t("errors.registrationFailed"), error);
     }
   };
@@ -67,21 +67,17 @@ function Form() {
               label={t("form.nameLabel")}
               {...form.register("name")}
               error={errors.name?.message}
-              required
             />
             <Input
               label={t("form.emailLabel")}
-              type="email"
               {...form.register("email")}
               error={errors.email?.message}
-              required
             />
             <Input
               label={t("form.phoneLabel")}
               {...form.register("phone")}
               helperText={t("form.phoneHelper")}
               error={errors.phone?.message}
-              required
             />
 
             <fieldset className={styles.positionsSection}>
@@ -112,9 +108,10 @@ function Form() {
             </fieldset>
 
             <FileInput
-              onChange={(file) => form.setValue("photo", file as File)}
+              onChange={(file) =>
+                form.setValue("photo", file as File, { shouldValidate: true })
+              }
               error={errors.photo?.message}
-              required
             />
 
             <div className={styles.actions}>

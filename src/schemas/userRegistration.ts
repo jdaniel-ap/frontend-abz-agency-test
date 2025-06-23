@@ -12,8 +12,8 @@ export const userRegistrationSchema = z.object({
     .regex(/^\+380\d{9}$/, "Phone must be in format +380XXXXXXXXX"),
   position_id: z.number().min(1, "Please select a position"),
   photo: z
-    .instanceof(File)
-    .refine((file) => file !== undefined, "Photo is required"),
+    .union([z.instanceof(File), z.undefined()])
+    .refine((file) => file instanceof File, "Photo is required"),
 });
 
 export type UserRegistrationForm = z.infer<typeof userRegistrationSchema>;
