@@ -12,7 +12,7 @@ function Hero() {
     img.onload = () => {
       setImageLoaded(true);
     };
-    img.src = "/src/assets/pexels-alexandr-podvalny-1227513-hd.jpeg";
+    img.src = "/src/assets/pexels-alexandr-podvalny-1227513-hd.webp";
   }, []);
 
   return (
