@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { ApiService } from "@/services/api";
-import type { UsersParams } from "@/types/api";
+import type { UsersParams, UserRegistrationRequest } from "@/types/api";
 
 const CACHE_TIMES = {
   FIVE_MINUTES: 5 * 60 * 1000,
@@ -24,5 +24,17 @@ export const usePositions = () => {
     queryFn: () => ApiService.getPositions(),
     staleTime: CACHE_TIMES.THIRTY_MINUTES,
     gcTime: CACHE_TIMES.ONE_HOUR,
+  });
+};
+
+export const useRegisterUser = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (userData: UserRegistrationRequest) =>
+      ApiService.registerUser(userData),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["users"] });
+    },
   });
 };
