@@ -52,7 +52,7 @@ function Form() {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="signup">
       {sentSuccess ? (
         <SuccessMessage />
       ) : (

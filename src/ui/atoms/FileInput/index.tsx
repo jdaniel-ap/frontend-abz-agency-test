@@ -36,10 +36,17 @@ function FileInput({
 
   return (
     <div className={styles.container}>
-      <div className={styles.inputGroup}>
+      <div
+        className={styles.inputGroup}
+        onClick={handleButtonClick}
+        style={{ cursor: "pointer" }}
+      >
         <Button
           type="button"
-          onClick={handleButtonClick}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleButtonClick();
+          }}
           className={styles.button}
           aria-describedby={error ? `${id}-error` : undefined}
         >

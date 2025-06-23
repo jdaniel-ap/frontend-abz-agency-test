@@ -56,7 +56,7 @@ function Users() {
   }
 
   return (
-    <section className={styles.container}>
+    <section className={styles.container} id="users">
       <Heading>{t("users.title")}</Heading>
       {!isLoading && allUsers.length === 0 && (
         <div className={styles.users}>{t("users.noUsers")}</div>
