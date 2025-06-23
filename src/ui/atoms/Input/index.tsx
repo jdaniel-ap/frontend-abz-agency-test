@@ -11,22 +11,24 @@ export interface InputProps
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
-    { label, error, helperText, variant = "normal", className, ...props },
+    { label, error, helperText, variant = "normal", className, id, ...props },
     ref
   ) => {
     const inputVariant = error ? "error" : variant;
+    const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`;
 
     return (
       <div className={`${styles.container} ${className || ""}`}>
         <div className={`${styles.inputWrapper} ${styles[inputVariant]}`}>
           <input
             ref={ref}
+            id={inputId}
             className={styles.input}
             placeholder=" "
             {...props}
           />
           {label && (
-            <label className={styles.floatingLabel} htmlFor={props.id}>
+            <label className={styles.floatingLabel} htmlFor={inputId}>
               {label}
             </label>
           )}
