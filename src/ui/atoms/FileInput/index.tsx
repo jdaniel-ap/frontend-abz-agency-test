@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Button } from "@/ui/atoms";
 import styles from "./FileInput.module.scss";
+import { useTranslation } from "react-i18next";
 
 interface FileInputProps {
   accept?: string;
@@ -19,6 +20,7 @@ function FileInput({
   required = false,
   id = "photo-upload",
 }: FileInputProps) {
+  const { t } = useTranslation();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -41,12 +43,12 @@ function FileInput({
           className={styles.button}
           aria-describedby={error ? `${id}-error` : undefined}
         >
-          Upload
+          {t("form.uploadButton")}
         </Button>
         <div className={`${styles.fileName} ${error ? styles.error : ""}`}>
           {selectedFile
             ? selectedFile.name.slice(0, LIMIT_CHARS)
-            : "Upload your photo"}
+            : t("form.uploadPlaceholder")}
         </div>
         <input
           ref={fileInputRef}
@@ -56,7 +58,7 @@ function FileInput({
           className={styles.hiddenInput}
           required={required}
           id={id}
-          aria-label="Upload your photo"
+          aria-label={t("form.uploadAriaLabel")}
         />
       </div>
       {error && (

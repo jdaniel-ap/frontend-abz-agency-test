@@ -2,6 +2,7 @@ import type { ImgHTMLAttributes } from "react";
 import { useState, useEffect } from "react";
 import styles from "./Avatar.module.scss";
 import photoCover from "@/assets/photo-cover.svg";
+import { useTranslation } from "react-i18next";
 
 interface AvatarProps
   extends Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "alt"> {
@@ -18,6 +19,7 @@ function Avatar({
   className = "",
   ...imgProps
 }: AvatarProps) {
+  const { t } = useTranslation();
   const [imageSrc, setImageSrc] = useState(photoCover);
 
   const avatarClasses = `${styles.avatar} ${styles[size]} ${className}`.trim();
@@ -44,7 +46,7 @@ function Avatar({
     <div className={avatarClasses}>
       <img
         src={imageSrc}
-        alt={imageSrc === photoCover ? "Default avatar" : alt}
+        alt={imageSrc === photoCover ? t("avatar.defaultAlt") : alt}
         className={styles.photo}
         onError={handleError}
         {...imgProps}

@@ -3,5 +3,42 @@
     "title": "Test assignment for front-end developer",
     "description": "What defines a good front-end developer is one that has skilled knowledge of HTML, CSS, JS with a vast understanding of User design thinking as they'll be building web interfaces with accessibility in mind. They should also be excited to learn, as the world of Front-End Development keeps evolving.",
     "button": "Sign up"
+  },
+  "header": {
+    "logoAlt": "ABZ Agency Logo",
+    "navigation": "Main navigation",
+    "usersButton": "Users",
+    "usersButtonAria": "View users list",
+    "signUpButton": "Sign up",
+    "signUpButtonAria": "Sign up for new account"
+  },
+  "users": {
+    "title": "Working with GET request",
+    "loadMore": "Show more",
+    "noUsers": "No users found",
+    "errorLoading": "Error loading users:",
+    "loading": "Loading..."
+  },
+  "form": {
+    "title": "Working with POST request",
+    "nameLabel": "Your name",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "phoneHelper": "+38 (XXX) XXX - XX - XX",
+    "positionTitle": "Select your position",
+    "uploadButton": "Upload",
+    "uploadPlaceholder": "Upload your photo",
+    "uploadAriaLabel": "Upload your photo",
+    "submitButton": "Sign up",
+    "submitting": "Signing up..."
+  },
+  "success": {
+    "title": "User successfully registered"
+  },
+  "avatar": {
+    "defaultAlt": "Default avatar"
+  },
+  "errors": {
+    "registrationFailed": "Registration failed:"
   }
 }

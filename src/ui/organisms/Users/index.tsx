@@ -4,8 +4,10 @@ import UserCard from "@/ui/molecules/UserCard";
 import { useUsers } from "@/hooks/useApi";
 import { useState, useEffect, useCallback } from "react";
 import type { User } from "@/types/api";
+import { useTranslation } from "react-i18next";
 
 function Users() {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [allUsers, setAllUsers] = useState<User[]>([]);
 
@@ -43,9 +45,11 @@ function Users() {
   if (error) {
     return (
       <section className={styles.container}>
-        <Heading>Working with GET request</Heading>
+        <Heading>{t("users.title")}</Heading>
         <div className={styles.users}>
-          <div>Error loading users: {error.message}</div>
+          <div>
+            {t("users.errorLoading")} {error.message}
+          </div>
         </div>
       </section>
     );
@@ -53,9 +57,9 @@ function Users() {
 
   return (
     <section className={styles.container}>
-      <Heading>Working with GET request</Heading>
+      <Heading>{t("users.title")}</Heading>
       {!isLoading && allUsers.length === 0 && (
-        <div className={styles.users}>No users found</div>
+        <div className={styles.users}>{t("users.noUsers")}</div>
       )}
       <div className={styles.users}>
         {allUsers.map((user) => (
@@ -67,7 +71,7 @@ function Users() {
           <Spinner />
         </div>
       ) : hasNextPage ? (
-        <Button onClick={handleLoadMore}>Show more</Button>
+        <Button onClick={handleLoadMore}>{t("users.loadMore")}</Button>
       ) : null}
     </section>
   );

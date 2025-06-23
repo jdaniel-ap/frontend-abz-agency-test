@@ -10,8 +10,10 @@ import {
   userRegistrationSchema,
   type UserRegistrationForm,
 } from "@/schemas/userRegistration";
+import { useTranslation } from "react-i18next";
 
 function Form() {
+  const { t } = useTranslation();
   const [sentSuccess, setSentSuccess] = useState(false);
   const { data: positionsData, isLoading } = usePositions();
   const registerUser = useRegisterUser();
@@ -34,14 +36,14 @@ function Form() {
       form.reset();
       setSentSuccess(true);
     } catch (error) {
-      console.error("Registration failed:", error);
+      console.error(t("errors.registrationFailed"), error);
     }
   };
 
   if (isLoading) {
     return (
       <div className={styles.container}>
-        <Heading>Working with POST request</Heading>
+        <Heading>{t("form.title")}</Heading>
         <div className={styles.spinnerContainer}>
           <Spinner />
         </div>
@@ -55,32 +57,32 @@ function Form() {
         <SuccessMessage />
       ) : (
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <Heading>Working with POST request</Heading>
+          <Heading>{t("form.title")}</Heading>
           <div className={styles.fields}>
             <Input
-              label="Your name"
+              label={t("form.nameLabel")}
               {...form.register("name")}
               error={errors.name?.message}
               required
             />
             <Input
-              label="Email"
+              label={t("form.emailLabel")}
               type="email"
               {...form.register("email")}
               error={errors.email?.message}
               required
             />
             <Input
-              label="Phone"
+              label={t("form.phoneLabel")}
               {...form.register("phone")}
-              helperText="+38 (XXX) XXX - XX - XX"
+              helperText={t("form.phoneHelper")}
               error={errors.phone?.message}
               required
             />
 
             <fieldset className={styles.positionsSection}>
               <legend className={styles.sectionTitle}>
-                Select your position
+                {t("form.positionTitle")}
               </legend>
               <div className={styles.positions}>
                 {positionsData?.positions?.map((position) => (
@@ -113,7 +115,9 @@ function Form() {
 
             <div className={styles.actions}>
               <Button disabled={isSubmitActionDisabled} type="submit">
-                {registerUser.isPending ? "Signing up..." : "Sign up"}
+                {registerUser.isPending
+                  ? t("form.submitting")
+                  : t("form.submitButton")}
               </Button>
             </div>
           </div>
