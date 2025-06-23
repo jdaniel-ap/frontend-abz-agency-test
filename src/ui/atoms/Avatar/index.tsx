@@ -1,5 +1,5 @@
 import type { ImgHTMLAttributes } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Avatar.module.scss";
 import photoCover from "@/assets/photo-cover.svg";
 
@@ -18,13 +18,27 @@ function Avatar({
   className = "",
   ...imgProps
 }: AvatarProps) {
-  const [imageSrc, setImageSrc] = useState(src);
+  const [imageSrc, setImageSrc] = useState(photoCover);
 
   const avatarClasses = `${styles.avatar} ${styles[size]} ${className}`.trim();
 
   const handleError = () => {
     setImageSrc(photoCover);
   };
+
+  // Load the actual image from API when src changes
+  useEffect(() => {
+    if (src && src !== photoCover) {
+      const img = new Image();
+      img.onload = () => {
+        setImageSrc(src);
+      };
+      img.onerror = () => {
+        setImageSrc(photoCover);
+      };
+      img.src = src;
+    }
+  }, [src]);
 
   return (
     <div className={avatarClasses}>
