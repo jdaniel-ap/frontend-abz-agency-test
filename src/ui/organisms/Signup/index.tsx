@@ -13,7 +13,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { useUsersStore } from "@/stores";
 
-function Form() {
+function Signup() {
   const { t } = useTranslation();
   const [sentSuccess, setSentSuccess] = useState(false);
   const { data: positionsData, isLoading: positionsLoading } = usePositions();
@@ -132,4 +132,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default Signup;

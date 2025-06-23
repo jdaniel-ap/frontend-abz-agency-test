@@ -1,5 +1,5 @@
 import { Header, Hero } from "@/ui/molecules";
-import { Form, Users } from "@/ui/organisms";
+import { Signup, Users } from "@/ui/organisms";
 
 function Home() {
   return (
@@ -7,7 +7,7 @@ function Home() {
       <Header />
       <Hero />
       <Users />
-      <Form />
+      <Signup />
     </>
   );
 }
