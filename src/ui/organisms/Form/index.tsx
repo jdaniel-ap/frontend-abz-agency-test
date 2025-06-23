@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Heading, Button, RadioButton, FileInput, Spinner } from "@/ui/atoms";
-import { SuccessMessage } from "@/ui/molecules";
+import { SuccessMessage, PhoneInput } from "@/ui/molecules";
 import styles from "./Form.module.scss";
 import Input from "@/ui/atoms/Input";
 import { usePositions, useRegisterUser } from "@/hooks/useApi";
@@ -73,11 +73,15 @@ function Form() {
               {...form.register("email")}
               error={errors.email?.message}
             />
-            <Input
+            <PhoneInput
               label={t("form.phoneLabel")}
-              {...form.register("phone")}
+              value={form.watch("phone")}
+              onChange={(cleanPhone) =>
+                form.setValue("phone", cleanPhone, { shouldValidate: true })
+              }
               helperText={t("form.phoneHelper")}
               error={errors.phone?.message}
+              required
             />
 
             <fieldset className={styles.positionsSection}>
