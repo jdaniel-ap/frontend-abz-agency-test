@@ -14,7 +14,7 @@ interface FileInputProps {
 const LIMIT_CHARS = 25;
 
 function FileInput({
-  accept = "image/*",
+  accept = "image/jpeg,image/jpg,.jpg,.jpeg",
   error,
   onChange,
   required = false,
@@ -30,6 +30,17 @@ function FileInput({
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0] || null;
+
+    // Validate file type - only accept JPEG/JPG
+    if (file && !file.type.includes("jpeg") && !file.type.includes("jpg")) {
+      // Reset the input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+
+      return;
+    }
+
     setSelectedFile(file);
     onChange?.(file);
   };

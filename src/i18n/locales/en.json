@@ -30,7 +30,8 @@
     "uploadPlaceholder": "Upload your photo",
     "uploadAriaLabel": "Upload your photo",
     "submitButton": "Sign up",
-    "submitting": "Signing up..."
+    "submitting": "Signing up...",
+    "invalidFileType": "The photo must be jpeg/jpg"
   },
   "success": {
     "title": "User successfully registered"
