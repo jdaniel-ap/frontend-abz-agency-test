@@ -7,8 +7,13 @@ function Form() {
     <form className={styles.container}>
       <Heading>Working with POST request</Heading>
       <div className={styles.fields}>
-        <Input label="Your name" />
-        <Input label="Email" type="email" error="Invalid email" />
+        <Input label="Your name" name="name" />
+        <Input label="Email" type="email" name="email" />
+        <Input
+          label="Phone"
+          name="phone"
+          helperText="+38 (XXX) XXX - XX - XX"
+        />
       </div>
     </form>
   );

@@ -33,6 +33,7 @@
 }
 
 .input {
+  height: 54px;
   font-family: $font-family-base;
   font-size: 16px;
   font-weight: $font-weight-regular;
@@ -42,7 +43,7 @@
   border-radius: $border-radius-sm;
   outline: none;
   line-height: 1.5;
-  width: fit-content;
+  width: 90%;
 
   &::placeholder {
     color: transparent;
@@ -62,7 +63,7 @@
   font-family: $font-family-base;
   font-size: 16px;
   font-weight: $font-weight-regular;
-  color: $color-muted;
+  color: $color-muted-secondary;
   background-color: $color-white;
   padding: 0 4px;
   pointer-events: none;
@@ -92,7 +93,8 @@
   font-weight: $font-weight-regular;
   margin-top: 4px;
   text-align: left;
-  color: $color-muted;
+  color: $color-muted-secondary;
+  padding-left: 16px;
 }
 
 .errorText {
