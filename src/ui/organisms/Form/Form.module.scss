@@ -9,7 +9,7 @@
   max-width: $breakpoint-lg;
 
   @include tablet-up {
-    padding-inline: 32px;
+    padding-inline: 0px;
     max-width: $breakpoint-lg;
     margin: 140px auto 50px;
   }
@@ -27,4 +27,38 @@
     width: 100%;
     max-width: 380px;
   }
+}
+
+.positionsSection {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.sectionTitle {
+  font-family: $font-family-base;
+  font-size: 16px;
+  font-weight: $font-weight-regular;
+  color: $color-text;
+  margin: 0 0 11px 0;
+}
+
+.positions {
+  display: flex;
+  flex-direction: column;
+}
+
+.errorText {
+  font-family: $font-family-base;
+  font-size: 12px;
+  color: $color-error;
+  margin-top: 4px;
+  text-align: left;
+  padding-left: 16px;
+}
+
+.actions {
+  width: 100%;
+  display: grid;
+  place-content: center;
 }
