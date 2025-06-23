@@ -5,4 +5,26 @@
   display: flex;
   flex-direction: column;
   margin: 140px 0 50px;
+  width: 100%;
+  max-width: $breakpoint-lg;
+
+  @include tablet-up {
+    padding-inline: 32px;
+    max-width: $breakpoint-lg;
+    margin: 140px auto 50px;
+  }
+}
+
+.fields {
+  margin: 0 auto;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  @include tablet-up {
+    margin: 50px auto 0;
+    width: 100%;
+    max-width: 380px;
+  }
 }

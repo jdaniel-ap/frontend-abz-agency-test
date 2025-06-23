@@ -6,9 +6,10 @@ function Form() {
   return (
     <form className={styles.container}>
       <Heading>Working with POST request</Heading>
-      <Input label="Your name" />
-      <Input label="Email" type="email" error="Invalid email" />
-      <Input label="Phone number" variant="filled" />
+      <div className={styles.fields}>
+        <Input label="Your name" />
+        <Input label="Email" type="email" error="Invalid email" />
+      </div>
     </form>
   );
 }
