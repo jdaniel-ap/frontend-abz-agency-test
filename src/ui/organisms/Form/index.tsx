@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Heading, Button, RadioButton, FileInput } from "@/ui/atoms";
+import { Heading, Button, RadioButton, FileInput, Spinner } from "@/ui/atoms";
 import { SuccessMessage } from "@/ui/molecules";
 import styles from "./Form.module.scss";
 import Input from "@/ui/atoms/Input";
@@ -42,7 +42,7 @@ function Form() {
     return (
       <div className={styles.container}>
         <Heading>Working with POST request</Heading>
-        <div>Loading positions...</div>
+        <Spinner />
       </div>
     );
   }
@@ -76,8 +76,10 @@ function Form() {
               required
             />
 
-            <div className={styles.positionsSection}>
-              <h3 className={styles.sectionTitle}>Select your position</h3>
+            <fieldset className={styles.positionsSection}>
+              <legend className={styles.sectionTitle}>
+                Select your position
+              </legend>
               <div className={styles.positions}>
                 {positionsData?.positions?.map((position) => (
                   <RadioButton
@@ -95,11 +97,11 @@ function Form() {
                 ))}
               </div>
               {errors.position_id && (
-                <div className={styles.errorText}>
+                <div className={styles.errorText} role="alert">
                   {errors.position_id.message}
                 </div>
               )}
-            </div>
+            </fieldset>
 
             <FileInput
               onChange={(file) => form.setValue("photo", file as File)}

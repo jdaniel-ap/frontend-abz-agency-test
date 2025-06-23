@@ -7,6 +7,7 @@ interface FileInputProps {
   error?: string;
   onChange?: (file: File | null) => void;
   required?: boolean;
+  id?: string;
 }
 
 const LIMIT_CHARS = 25;
@@ -16,6 +17,7 @@ function FileInput({
   error,
   onChange,
   required = false,
+  id = "photo-upload",
 }: FileInputProps) {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -37,6 +39,7 @@ function FileInput({
           type="button"
           onClick={handleButtonClick}
           className={styles.button}
+          aria-describedby={error ? `${id}-error` : undefined}
         >
           Upload
         </Button>
@@ -52,9 +55,15 @@ function FileInput({
           onChange={handleFileChange}
           className={styles.hiddenInput}
           required={required}
+          id={id}
+          aria-label="Upload your photo"
         />
       </div>
-      {error && <div className={styles.errorText}>{error}</div>}
+      {error && (
+        <div className={styles.errorText} id={`${id}-error`} role="alert">
+          {error}
+        </div>
+      )}
     </div>
   );
 }
