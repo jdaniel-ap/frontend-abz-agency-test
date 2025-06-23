@@ -11,4 +11,28 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    headers: {
+      // Security headers for development
+      "Strict-Transport-Security":
+        "max-age=31536000; includeSubDomains; preload",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-XSS-Protection": "0",
+      "X-Content-Type-Options": "nosniff",
+      "Content-Security-Policy":
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval'; object-src 'none'; base-uri 'self';",
+    },
+  },
+  preview: {
+    headers: {
+      // Security headers for preview mode
+      "Strict-Transport-Security":
+        "max-age=31536000; includeSubDomains; preload",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-XSS-Protection": "0",
+      "X-Content-Type-Options": "nosniff",
+      "Content-Security-Policy":
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval'; object-src 'none'; base-uri 'self';",
+    },
+  },
 });

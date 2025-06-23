@@ -1,0 +1,45 @@
+# Note: Only use this if deploying to an Apache server
+
+<IfModule mod_headers.c>
+    # HTTP Strict Transport Security (HSTS)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
+    
+    # Prevent clickjacking attacks
+    Header always append X-Frame-Options SAMEORIGIN
+    
+    # Disable XSS Auditor (as recommended by security experts)
+    Header always set X-XSS-Protection "0"
+    
+    # Prevent MIME type sniffing
+    Header set X-Content-Type-Options nosniff
+    
+    # Content Security Policy - Adjusted for React/Vite apps
+    # Note: You may need to adjust this based on your specific needs
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https:; connect-src 'self' https://frontend-test-assignment-api.abz.agency;"
+    
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Feature Policy / Permissions Policy
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# Additional security measures
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Redirect HTTP to HTTPS (if SSL is available)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Handle React Router (SPA routing)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+</IfModule>
+
+# Prevent access to sensitive files
+<FilesMatch "\.(env|git|gitignore|htaccess|htpasswd)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

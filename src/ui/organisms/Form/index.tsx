@@ -42,7 +42,9 @@ function Form() {
     return (
       <div className={styles.container}>
         <Heading>Working with POST request</Heading>
-        <Spinner />
+        <div className={styles.spinnerContainer}>
+          <Spinner />
+        </div>
       </div>
     );
   }
